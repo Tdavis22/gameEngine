@@ -2,9 +2,10 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "graphics.h"
+#include "globals.h"
 
 Graphics::Graphics() {
-    SDL_CreateWindowAndRenderer(640/*width*/, 480, 0, &this->_window, &this->_renderer);
+    SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT, 0, &this->_window, &this->_renderer);
 	SDL_SetWindowTitle(this->_window, "Cavestory");
 
 
