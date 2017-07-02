@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\content">
+      <UniqueIdentifier>{17aae1fa-4bee-4ed0-b933-5ed52fab0d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\content\Sprites">
+      <UniqueIdentifier>{c3c8ee3b-3871-4ea3-8cb4-34652d468953}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +33,9 @@
     <ClCompile Include="input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphics.h">
@@ -38,5 +47,18 @@
     <ClInclude Include="input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Cave\CaveStory\data\MyChar.pbm">
+      <Filter>Source Files\content\Sprites</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="content\sprites\MyChar.png">
+      <Filter>Source Files\content\Sprites</Filter>
+    </Image>
   </ItemGroup>
 </Project>

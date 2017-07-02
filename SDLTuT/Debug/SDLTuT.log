@@ -1,4 +1,3 @@
-﻿  game.cpp
-c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\game.cpp(57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  graphics.cpp
   SDLTuT.vcxproj -> C:\Users\Theod\documents\visual studio 2017\Projects\SDLTuT\Debug\SDLTuT.exe
   SDLTuT.vcxproj -> C:\Users\Theod\documents\visual studio 2017\Projects\SDLTuT\Debug\SDLTuT.pdb (Partial PDB)

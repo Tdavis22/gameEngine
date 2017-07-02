@@ -1,6 +1,10 @@
 #pragma once
-
+#include "sprite.h"
 class Graphics;
+/*
+Holds all info for our game loop
+
+*/
 
 class Game {
 public:
@@ -10,4 +14,6 @@ private:
 	void gameLoop();
 	void draw(Graphics &graphics);
 	void update(float elapsedTime);/*eslapsed time = delta*/
+
+	Sprite _player;
 };
