@@ -17,9 +17,9 @@ public:
 	/*virtual as seperate for still and animated sprite*/
 	virtual void update();
 	void draw(Graphics &graphics, int x, int y);
-private:
+protected:
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
-
+private:
 	float _x, _y;
 };
