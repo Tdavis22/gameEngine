@@ -2,6 +2,7 @@
 
 #include <map>
 #include <string>
+#include <SDL.h>
 /*
 Holds all information dealing with graphics for the game
 */

@@ -39,10 +39,7 @@ public:
 	*/
 	void draw(Graphics &graphics, int x, int y);
 
-	/*void setupAnmations
-	A required functions that sets up all animations for a sprite
-	*/
-	virtual void setupAnimations();
+
 
 protected:
 	double _timeToUpdate;
@@ -72,7 +69,14 @@ protected:
 	/*void animationDone
 	Logic that happens when an animation ends
 	*/
-	virtual void animationDone(std::string currentAnimation);
+	virtual void animationDone(std::string currentAnimation) = 0;
+
+	/*void setupAnmations
+	A required functions that sets up all animations for a sprite
+     = 0 means pure virtual	
+	*/
+
+	virtual void setupAnimations() = 0;
 private:
 	/*vector of rectangles filled with animation frame/locations on sprite sheet*/
 	std::map < std::string, std::vector<SDL_Rect> > _animations;

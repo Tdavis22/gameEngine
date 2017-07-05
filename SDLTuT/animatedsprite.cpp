@@ -85,13 +85,4 @@ void AnimatedSprite::draw(Graphics &graphics, int x, int y) {
 	}
 }
 
-void AnimatedSprite::animationDone(std::string currentAnimation) {
-}
 
-
-/* needs to be implemented in specific character*/
-void AnimatedSprite::setupAnimations() {
-	/*player run left*/
-	this->addAnimation(3, 0, 0, "RunLeft", 16, 16, Vector2(0, 0));
-	this->addAnimation(3, 0, 16, "RunRight", 16, 16, Vector2(0, 0));
-}
