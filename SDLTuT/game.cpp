@@ -29,7 +29,7 @@ void Game::gameLoop() {
 	setting player sprite to first image in player sprite
 	*/
 	this->_player = Player(graphics, 100, 100);
-	this->_level = Level("map 1", Vector2(100, 100), graphics);
+	this->_level = Level("testmap", Vector2(100, 100), graphics);
 	
 	int LAST_UPDATE_TIME = (int)SDL_GetTicks(); //ms after game init
 	//Start game loop

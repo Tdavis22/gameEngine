@@ -19,6 +19,9 @@
     <Filter Include="Source Files\content\Sprites">
       <UniqueIdentifier>{c3c8ee3b-3871-4ea3-8cb4-34652d468953}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\content\tilesets">
+      <UniqueIdentifier>{4bbb015b-9015-4de0-862e-b94936727404}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -43,6 +46,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,15 +80,38 @@
     <ClInclude Include="level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Cave\CaveStory\data\MyChar.pbm">
       <Filter>Source Files\content\Sprites</Filter>
+    </None>
+    <None Include="content\tilesets\PrtCave.pbm">
+      <Filter>Source Files\content\tilesets</Filter>
+    </None>
+    <None Include="content\tilesets\prtCaveSheet.tsx">
+      <Filter>Source Files\content\tilesets</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="content\sprites\MyChar.png">
       <Filter>Source Files\content\Sprites</Filter>
     </Image>
+    <Image Include="content\tilesets\PrtCave.png.png">
+      <Filter>Source Files\content\tilesets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDLTuT.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

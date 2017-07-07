@@ -150,6 +150,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="tile.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animated_sprite.h" />
@@ -159,13 +161,22 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="level.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="sprite.h" />
+    <ClInclude Include="tile.h" />
+    <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Cave\CaveStory\data\MyChar.pbm" />
+    <None Include="content\tilesets\PrtCave.pbm" />
+    <None Include="content\tilesets\prtCaveSheet.tsx" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="content\sprites\MyChar.png" />
+    <Image Include="content\tilesets\PrtCave.png.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDLTuT.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
