@@ -161,6 +161,7 @@
     <ClInclude Include="input.h" />
     <ClInclude Include="level.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="rectangle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="tile.h" />

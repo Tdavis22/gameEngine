@@ -25,11 +25,13 @@ void Game::gameLoop() {
 	Input input;
 	SDL_Event event;/*hold input every frame*/
     
+
+	this->_level = Level("testmap", Vector2(100, 100), graphics);
 	/*Sprites are 16x16
 	setting player sprite to first image in player sprite
 	*/
-	this->_player = Player(graphics, 100, 100);
-	this->_level = Level("testmap", Vector2(100, 100), graphics);
+	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
+	
 	
 	int LAST_UPDATE_TIME = (int)SDL_GetTicks(); //ms after game init
 	//Start game loop
@@ -84,4 +86,15 @@ void Game::draw(Graphics & graphics) {
 void Game::update(float elapsedtime) {
 	this->_player.update(elapsedtime); /*should update all entities*/
 	this->_level.update(elapsedtime);
+
+	//Check collisions
+	//Should be a for loop of all entities?
+	std::vector<Rectangle> others;
+
+	//checks all collision rects with the player bounding box. 
+	if ((others = this->_level.checkTileCollisions(this->_player.getBoundingBox())).size() > 0) {
+		//Player collided with at least one tile. handle it. 
+		this->_player.handleTileCollisions(others);
+
+	}
 }

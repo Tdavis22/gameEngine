@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" source="../tilesets/prtCaveSheet.tsx"/>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="16" tileheight="16" nextobjectid="27">
+ <tileset firstgid="1" source="../../../../../../gameProjects/gameEngine/SDLTuT/content/tilesets/prtCaveSheet.tsx"/>
  <layer name="background" width="20" height="16">
   <data>
    <tile gid="34"/>
@@ -649,4 +649,26 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <objectgroup name="collisions">
+  <object id="1" x="144" y="16" width="15" height="14"/>
+  <object id="2" x="145" y="63" width="13" height="15"/>
+  <object id="3" x="113" y="79" width="76" height="15"/>
+  <object id="4" x="43" y="46" width="34" height="152"/>
+  <object id="5" x="47" y="133" width="48" height="18"/>
+  <object id="7" x="53" y="144" width="57" height="15"/>
+  <object id="8" x="128" y="144" width="48" height="16"/>
+  <object id="9" x="192" y="145" width="16" height="12"/>
+  <object id="10" x="209" y="128" width="31" height="12"/>
+  <object id="11" x="241" y="102" width="14" height="26"/>
+  <object id="12" x="79" y="161" width="14" height="40"/>
+  <object id="14" x="172" y="29" width="19" height="48"/>
+  <object id="15" x="209" y="143" width="14" height="43"/>
+  <object id="19" x="94" y="181" width="117" height="69"/>
+  <object id="21" x="480" y="402" height="2"/>
+ </objectgroup>
+ <objectgroup color="#4def11" name="spawn points">
+  <object id="25" name="player" x="126" y="66" width="6" height="5">
+   <ellipse/>
+  </object>
+ </objectgroup>
 </map>

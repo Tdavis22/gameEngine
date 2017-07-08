@@ -107,7 +107,7 @@ void Level::loadMap(std::string mapName, Graphics&graphics) {
 							//Get the tileset for this specific gid(when using multiple tilesets)
 							int gid = pTile->IntAttribute("gid");
 							Tileset tls;
-							for (int i = 0; i < this->_tilesets.size(); i++) {
+							for (int i = 0; i < this->_tilesets.size(); ++i) {
 								if (this->_tilesets[i].FirstGid <= gid) {
 									tls = this->_tilesets.at(i);
 									break;
@@ -166,6 +166,57 @@ void Level::loadMap(std::string mapName, Graphics&graphics) {
 			player = player->NextSiblingElement("layer");
 		}
 	}
+
+	//Parse out the collisions
+	XMLElement * pObjectGroup = mapNode->FirstChildElement("objectgroup");
+	if (pObjectGroup != NULL) {
+		while (pObjectGroup) {
+			const char* name = pObjectGroup->Attribute("name");
+			std::stringstream ss;
+			ss << name;
+			if (ss.str() == "collisions") {
+				XMLElement * pObject = pObjectGroup->FirstChildElement("object");
+				if (pObject != NULL) {
+					while (pObject) {
+						float x, y, width, height;
+						x = pObject->FloatAttribute("x");
+						y = pObject->FloatAttribute("y");
+						width = pObject->FloatAttribute("width");
+						height = pObject->FloatAttribute("height");
+
+						this->_collsionRects.push_back(Rectangle(
+							std::ceil(x) * globals::SPRITE_SCALE,
+						    std::ceil(y) * globals::SPRITE_SCALE,
+						    std::ceil(width) * globals::SPRITE_SCALE,
+						    std::ceil(height) * globals::SPRITE_SCALE
+						));
+
+						pObject = pObject->NextSiblingElement("object");
+					}
+				}
+			}
+			//other objectgroups go here with an else if (ss.str() == "something")
+			else if (ss.str() == "spawn points") {
+				XMLElement * pObject = pObjectGroup->FirstChildElement("object");
+				if (pObject != NULL) {
+					while (pObject) {
+						float x = pObject->FloatAttribute("x");
+						float y = pObject->FloatAttribute("y");
+						const char* name = pObject->Attribute("name");
+						std::stringstream ss;
+						ss << name;
+						if (ss.str() == "player") {
+							this->_spawnPoint = Vector2(std::ceil(x) * globals::SPRITE_SCALE, std::ceil(y) * globals::SPRITE_SCALE);
+						}
+
+						pObject = pObject->NextSiblingElement("object");
+					}
+				}
+			}
+
+			pObjectGroup = pObjectGroup->NextSiblingElement("objectgroup");
+		}
+	}
 }
 
 void Level::update(int elapsedTime) {
@@ -178,17 +229,19 @@ void Level::draw(Graphics &graphics) {
 		this->_tileList.at(i).draw(graphics);
 	}
 	
-	/*SDL_Rect sourceRect = {0, 0, 64, 64};
-	SDL_Rect destRect;/*will be drawn to every square
 
-	for (int x = 0; x < this->_size.x; x+= 64) {
-		for (int y = 0; y < this->_size.y; y+= 64) {
-			destRect.x = x * globals::SPRITE_SCALE;
-			destRect.y = y * globals::SPRITE_SCALE;
-			destRect.w = 64 * globals::SPRITE_SCALE;
-			destRect.h = 64 * globals::SPRITE_SCALE;
-			graphics.blitSurface(this->_backgroundTexture, &sourceRect, &destRect);
+}
+
+//Returns a vector of every rectangle that is colliding
+std::vector<Rectangle> Level::checkTileCollisions(const Rectangle &other) {
+	std::vector<Rectangle> others;
+	for (int i = 0; i< this->_collsionRects.size(); ++i) {
+		if (this->_collsionRects.at(i).collidesWith(other)) {
+			others.push_back(this->_collsionRects.at(i));
 		}
-
-	}*/
+	}
+	return others;
+}
+const Vector2 Level::getPlayerSpawnPoint() const {
+	return this->_spawnPoint;
 }

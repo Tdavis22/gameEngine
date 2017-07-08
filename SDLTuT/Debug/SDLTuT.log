@@ -1,5 +1,8 @@
 ﻿  level.cpp
-c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(111): warning C4018: '<': signed/unsigned mismatch
-c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(178): warning C4018: '<': signed/unsigned mismatch
+c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(110): warning C4018: '<': signed/unsigned mismatch
+c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(192): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(209): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(228): warning C4018: '<': signed/unsigned mismatch
+c:\users\theod\documents\visual studio 2017\projects\sdltut\sdltut\level.cpp(238): warning C4018: '<': signed/unsigned mismatch
   SDLTuT.vcxproj -> C:\Users\Theod\documents\visual studio 2017\Projects\SDLTuT\Debug\SDLTuT.exe
   SDLTuT.vcxproj -> C:\Users\Theod\documents\visual studio 2017\Projects\SDLTuT\Debug\SDLTuT.pdb (Partial PDB)

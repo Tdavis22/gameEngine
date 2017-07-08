@@ -7,6 +7,25 @@ namespace globals {
 
 	const int SPRITE_SCALE = 2;
 }
+namespace sides {
+	enum Side {
+		TOP,
+		BOTTOM,
+		LEFT,
+		RIGHT,
+		NONE
+	};
+	const inline Side getOppositeSide(Side side) {
+		//returns the opposite side. Parameter top: Return = bottom
+		//basically a few if else statements with fancy turnary syntax
+		return
+			side == TOP ? BOTTOM :
+			side == BOTTOM ? TOP :
+			side == LEFT ? RIGHT :
+			side == RIGHT ? LEFT :
+			NONE;
+	}
+}
 
 enum Direction {
 	LEFT,
