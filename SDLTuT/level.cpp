@@ -1,6 +1,8 @@
 #include "level.h"
 #include "graphics.h"
 #include "globals.h"
+#include "utils.h"
+#include "slope.h"
 
 #include "tinyxml2.h"
 
@@ -196,6 +198,54 @@ void Level::loadMap(std::string mapName, Graphics&graphics) {
 				}
 			}
 			//other objectgroups go here with an else if (ss.str() == "something")
+			else if (ss.str() == "slopes") {
+				//In the xml all slops are objects with x and y
+				//Poly lines are point offsets from the x and y
+				XMLElement * pObject = pObjectGroup->FirstChildElement("object");
+				if (pObject != NULL) {
+					while (pObject) {
+						std::vector<Vector2> points;
+						Vector2 p1;
+						p1 = Vector2(std::ceil(pObject->FloatAttribute("x")), std::ceil(pObject->FloatAttribute("y")));
+						XMLElement * pPolyline = pObject->FirstChildElement("polyline");
+						if (pPolyline != NULL) {
+							std::vector<std::string> pairs;
+							const char* pointString = pPolyline->Attribute("points");
+
+							std::stringstream ss;
+							ss << pointString;
+							Utils::split(ss.str(), pairs, ' ');
+							//Now we have each of the pairs. Loop through the list of pairs
+							// and split them in Vector2s and then store them in our points vector
+							for (int i = 0; i < pairs.size(); i++) {
+								std::vector<std::string> ps;
+								Utils::split(pairs.at(i), ps, ',');
+								points.push_back(Vector2(std::stoi(ps.at(0)), std::stoi(ps.at(1))));
+
+							}
+						}
+						//going in groups of 2 points
+						for (int i = 0; i < points.size(); i += 2) {
+							this->_slopes.push_back(Slope(
+								//I think the turnary is not necessary
+								Vector2((p1.x + points.at(i < 2 ? i : i - 1).x) * globals::SPRITE_SCALE,
+								(p1.y + points.at(i < 2 ? i : i - 1).y) * globals::SPRITE_SCALE),
+
+								Vector2((p1.x + points.at(i < 2 ? i + 1 : i).x) * globals::SPRITE_SCALE,
+								(p1.y + points.at(i < 2 ? i + 1 : i).y) * globals::SPRITE_SCALE)
+							));
+						}
+						pObject = pObject->NextSiblingElement("object");
+					}
+				}
+
+
+
+
+			}
+			
+			
+			
 			else if (ss.str() == "spawn points") {
 				XMLElement * pObject = pObjectGroup->FirstChildElement("object");
 				if (pObject != NULL) {
@@ -238,6 +288,15 @@ std::vector<Rectangle> Level::checkTileCollisions(const Rectangle &other) {
 	for (int i = 0; i< this->_collsionRects.size(); ++i) {
 		if (this->_collsionRects.at(i).collidesWith(other)) {
 			others.push_back(this->_collsionRects.at(i));
+		}
+	}
+	return others;
+}
+std::vector<Slope> Level::checkSlopeCollisions(const Rectangle &other) {
+	std::vector<Slope> others;
+	for (int i = 0; i < this->_slopes.size(); i++) {
+		if (this->_slopes.at(i).collidesWith(other)) {
+			others.push_back(this->_slopes.at(i));
 		}
 	}
 	return others;

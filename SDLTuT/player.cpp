@@ -1,13 +1,16 @@
 #include "player.h"
 #include "graphics.h"
+#include "slope.h"
 
 /*could also include const string for player sprite*/
 namespace player_constants {
 	const int TIME_TO_UPDATE = 100;
 	const float WALK_SPEED = 0.2f;
+	const float JUMP_SPEED = 0.7f;
 
 	const float GRAVITY = 0.002f;
 	const float GRAVITY_CAP = 0.8f;
+	const float PLAYERHEIGHT = 16;
 }
 Player::Player() {}
 
@@ -58,6 +61,16 @@ void Player::stopMoving() {
 	this->_dx = 0.0f;
 	this->playAnimation(this->_facing == RIGHT ? "IdleRight" : "IdleLeft");
 }
+
+void Player::jump() {
+	if (this->_grounded) {
+		this->_dy = 0;
+		this->_dy -= player_constants::JUMP_SPEED;
+		this->_grounded = false;
+	}
+
+}
+
 //void handlTileCollisions
 //Handles collisions with all tiles the player is colliding with
 void Player::handleTileCollisions(std::vector<Rectangle> &others) {
@@ -67,8 +80,12 @@ void Player::handleTileCollisions(std::vector<Rectangle> &others) {
 		if (collisionSide != sides::NONE) {
 			switch (collisionSide) {
 			case sides::TOP:
-				this->_y = others.at(i).getBottom() + 1;
 				this->_dy = 0;
+				this->_y = others.at(i).getBottom() + 1;
+				if (this->_grounded) {
+					this->_dx = 0;
+					this->_x -= this->_facing == RIGHT ? 1 : -1;
+				}
 				break;
 			case sides::BOTTOM:
 				
@@ -92,6 +109,28 @@ void Player::handleTileCollisions(std::vector<Rectangle> &others) {
 	}
 
 }
+
+//Handles all slopes the plaer is colliding with
+void Player::handleSlopeCollisions(std::vector<Slope> &others) {
+	for (int i = 0; i < others.size(); i++) {
+		//calculate where on the slope the player's bottom center is touching
+		//y = mx+b
+		//First calculate "b" (slope intercept) using one of the points (b = y -mx)
+		int b = (others.at(i).getP1().y - (others.at(i).getSlope() * fabs(others.at(i).getP1().x)));
+
+		//now get player's center x 
+		int centerX = this->_boundingBox.getCenterX();
+		//now pass that x into the equation to get the correct y heigh the player should be at
+		int newY = (others.at(i).getSlope() * centerX) + b - 8;
+
+		if (this->_grounded) {
+			this->_y = newY - this->_boundingBox.getHeight();
+			this->_grounded = true; 
+		}
+	}
+
+}
+
 void Player::update(float elapsedTime) {
 	//applying gravity
 	if (this->_dy <= player_constants::GRAVITY_CAP) {

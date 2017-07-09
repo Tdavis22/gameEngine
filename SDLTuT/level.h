@@ -6,6 +6,7 @@
 #include "tile.h"
 #include "globals.h"
 #include "rectangle.h"
+#include "slope.h"
 
 
 
@@ -23,6 +24,7 @@ public:
 	void draw(Graphics &graphics);
 
 	std::vector<Rectangle> checkTileCollisions(const Rectangle &other);
+	std::vector<Slope> checkSlopeCollisions(const Rectangle &other);	
 	const Vector2 getPlayerSpawnPoint() const;
 private:
 	std::string _mapName;
@@ -34,6 +36,7 @@ private:
 	std::vector<Tile> _tileList;
 	std::vector<Tileset> _tilesets;
 	std::vector<Rectangle> _collsionRects;
+	std::vector<Slope> _slopes;
 
 	/*void loadMap
 	All Levels stored in content/maps

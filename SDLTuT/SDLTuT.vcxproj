@@ -163,9 +163,11 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="rectangle.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="slope.h" />
     <ClInclude Include="sprite.h" />
     <ClInclude Include="tile.h" />
     <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Cave\CaveStory\data\MyChar.pbm" />
