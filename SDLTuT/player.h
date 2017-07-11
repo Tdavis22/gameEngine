@@ -22,6 +22,14 @@ public:
 
 	void jump();
 
+	//Animation changes
+	void lookUp();
+	void stopLookingUp();
+	void lookDown();
+	void stopLookingDown();
+
+	
+
 	virtual void animationDone(std::string currentAnimation);
 	virtual void setupAnimations();
 	
@@ -36,4 +44,6 @@ private:
 	Direction _facing;
 
 	bool _grounded;
+	bool _lookingUp;
+	bool _lookingDown;
 };
