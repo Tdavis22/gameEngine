@@ -21,7 +21,9 @@ Player::Player(Graphics &graphics, Vector2 spawnPoint) :
 	_facing(RIGHT),
 	_grounded(false),
 	_lookingDown(false),
-	_lookingUp(false)
+	_lookingUp(false),
+	_maxHealth(3),
+	_currentHealth(3)
 	{
 	graphics.loadImage("content/sprites/MyChar.png");
 	this->setupAnimations();
@@ -108,13 +110,15 @@ void Player::stopLookingUp() {
 }
 
 void Player::lookDown() {
-	this->_lookingDown = true;
-	if (this->_grounded) {
-		//we need to interact here
-		this->playAnimation(this->_facing == RIGHT ? "LookBackwardsRight" : "LookBackwardsLeft");
-	}
-	else {
-		this->playAnimation(this->_facing == RIGHT ? "RunRightUp" : "RunLeftUp");
+	if (this->_dx == 0) {
+		this->_lookingDown = true;
+		if (this->_grounded) {
+			//we need to interact here
+			this->playAnimation(this->_facing == RIGHT ? "LookBackwardsRight" : "LookBackwardsLeft");
+		}
+		else {
+			this->playAnimation(this->_facing == RIGHT ? "RunRightUp" : "RunLeftUp");
+		}
 	}
 }
 

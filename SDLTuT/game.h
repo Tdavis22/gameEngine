@@ -1,6 +1,7 @@
 #pragma once
 #include "player.h"
 #include "level.h"
+#include "hud.h"
 class Graphics;
 /*
 Holds all info for our game loop
@@ -18,4 +19,5 @@ private:
 
 	Player _player;
 	Level _level;
+	HUD _hud;	
 };

@@ -31,7 +31,7 @@ void Game::gameLoop() {
 	setting player sprite to first image in player sprite
 	*/
 	this->_player = Player(graphics, this->_level.getPlayerSpawnPoint());
-	
+	this->_hud = HUD(graphics, this->_player);
 	
 	int LAST_UPDATE_TIME = (int)SDL_GetTicks(); //ms after game init
 	//Start game loop
@@ -94,6 +94,7 @@ void Game::draw(Graphics & graphics) {
 	graphics.clear();
 	this->_level.draw(graphics);
 	this->_player.draw(graphics);
+	this->_hud.draw(graphics);
 
 	graphics.flip();
 }
@@ -101,6 +102,7 @@ void Game::draw(Graphics & graphics) {
 void Game::update(float elapsedtime) {
 	this->_player.update(elapsedtime); /*should update all entities*/
 	this->_level.update(elapsedtime);
+	this->_hud.update(elapsedtime);
 
 	//Check collisions
 	//Should be a for loop of all entities?
