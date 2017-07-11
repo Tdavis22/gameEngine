@@ -7,6 +7,7 @@
 #include "globals.h"
 #include "rectangle.h"
 #include "slope.h"
+#include "animated_tile.h"
 
 
 
@@ -37,6 +38,8 @@ private:
 	std::vector<Tileset> _tilesets;
 	std::vector<Rectangle> _collsionRects;
 	std::vector<Slope> _slopes;
+	std::vector<AnimatedTile> _animatedTileList;
+	std::vector<AnimatedTileInfo> _animatedTileInfos;
 
 	/*void loadMap
 	All Levels stored in content/maps
@@ -44,6 +47,8 @@ private:
 	Saved as XML format
 	*/
 	void loadMap(std::string mapName, Graphics &graphics);
+
+	Vector2 getTilesetPosition(Tileset tls, int gid, int tileWidth, int tileHeight);
 };
 
 //Tileset structure

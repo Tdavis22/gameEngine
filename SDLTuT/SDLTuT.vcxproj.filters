@@ -54,6 +54,9 @@
     <ClCompile Include="tinyxml2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="animated_tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphics.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="slope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animated_tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
