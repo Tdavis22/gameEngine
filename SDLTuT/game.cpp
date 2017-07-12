@@ -7,7 +7,7 @@
 
 namespace {
 	const int FPS = 50;
-	const int MAX_FRAME_TIME = 5 * 1000 / FPS; //maximum time a frame is alowed to last
+	const int MAX_FRAME_TIME = 1000 / FPS; //maximum time a frame is alowed to last
 }
 
 Game::Game() {

@@ -23,7 +23,7 @@ Player::Player(Graphics &graphics, Vector2 spawnPoint) :
 	_lookingDown(false),
 	_lookingUp(false),
 	_maxHealth(3),
-	_currentHealth(3)
+	_currentHealth(2)
 	{
 	graphics.loadImage("content/sprites/MyChar.png");
 	this->setupAnimations();

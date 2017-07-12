@@ -15,5 +15,7 @@ private:
 	Player _player;
 
 	Sprite _healthBarSprite;
-	Sprite _healthNumber1;
+	Sprite _healthNumber1;//Right most digit for health. 
+					      //In case of 5 health it is 5. In case of 12 health it is 2
+	Sprite _currentHealthBar;
 };

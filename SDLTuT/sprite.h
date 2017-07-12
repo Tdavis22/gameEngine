@@ -30,6 +30,8 @@ public:
 
 	void setSourceRectX(int value);
 	void setSourceRectY(int value);
+	void setSourceRectW(int value);
+	void setSourceRectH(int value);
 protected:
 	SDL_Rect _sourceRect;
 	SDL_Texture* _spriteSheet;
